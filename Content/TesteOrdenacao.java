@@ -1,4 +1,4 @@
-package Content;
+package content;
 
 import java.util.Scanner;
 public class TesteOrdenacao {
