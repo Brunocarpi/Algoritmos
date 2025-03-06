@@ -1,4 +1,4 @@
-package content;
+
 
 import java.util.Random;
 
@@ -57,15 +57,39 @@ public class NossoVetor {
         return ocupacao == 0;
     }
 
+    // public int remove() {
+    //     if (!estaVazio()){
+    //         int aux = vetor[--ocupacao];
+    //         if (vetor.length>=6 && ocupacao <= vetor.length/4){
+    //             redimensionarVetor(vetor.length/2);
+    //         } return aux;
+    //     }
+    //     return -1;
+    // }
     public int remove() {
-        if (!estaVazio()){
-            int aux = vetor[--ocupacao];
-            if (vetor.length>=6 && ocupacao <= vetor.length/4){
-                redimensionarVetor(vetor.length/2);
-            } return aux;
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, nao ha o que remover");
         }
-        return -1;
-    }
+        int aux = vetor[--ocupacao];
+        if (vetor.length >= 6 && ocupacao <= vetor.length / 4) {
+            redimensionarVetor(vetor.length / 2);
+        }
+        return aux;
+        }
+        public boolean contem (int elemento) {
+            for (int i=0; i< ocupacao; i++)
+            if (vetor[i] == elemento)
+            return true;
+        return false;
+        }
+        public int indiceDe (int elemento) {
+            if (estaVazio())
+                throw new VetorVazioException("vetor esta vazio");
+            for (int i=0; i<ocupacao; i++)
+                if (vetor[i] == elemento)
+                    return i;
+            throw new ElementoNaoEncontradoException(elemento + " nao encontrado");
+        }
 
     @Override
     public String toString() {
@@ -86,4 +110,15 @@ public class NossoVetor {
         }
         ocupacao = vetor.length;
     }
+}
+class VetorVazioException extends RuntimeException {
+    public VetorVazioException(String msg) {
+        super(msg);
+    }
+}
+class ElementoNaoEncontradoException extends RuntimeException {
+    public ElementoNaoEncontradoException(String msg) {
+        super(msg);
+    }
+
 }
