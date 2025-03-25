@@ -6,7 +6,7 @@ public class NoDuplo {
     public NoDuplo (int info) {
         setInfo(info);
         setAnterior(null);
-       setProximo(null);
+        setProximo(null);
     }
     public int getInfo() {
         return info;
