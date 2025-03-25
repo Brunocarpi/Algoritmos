@@ -1,5 +1,3 @@
-
-
 public class ListaSimples {
     private No primeiro;
     private No ultimo; 
@@ -53,6 +51,24 @@ public class ListaSimples {
                 ultimo.setProximo(novo);
             }
             ultimo = novo;
+        }
+        public int removeFim () {
+            if (estaVazia())
+            throw new RuntimeException("Lista vazia, não há o que remover");
+            int elemento = ultimo.getInfo();
+            if (primeiro == ultimo) { //tem um só, vai esvaziar a lista
+                primeiro = null;
+                ultimo = null;
+            }
+            else {
+            No runner = primeiro;
+            while (runner.getProximo() != ultimo) //percorre até o penúltimo
+                runner = runner.getProximo();
+            
+            runner.setProximo(null);
+            ultimo = runner;
+            }
+            return elemento;
         }
     }
 
