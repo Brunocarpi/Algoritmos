@@ -142,6 +142,30 @@ public class NossoVetor {
             vetor[i + 1] = x;
         }
     }
+
+    int partition (int p, int r) {
+        int x = vetor[r]; //O pivô é o último elemento do vetor
+        int i = p - 1;
+        int aux;
+        for (int j = p; j < r; j++) {
+            if (vetor[j] <= x) {
+                aux = vetor[++i];
+                vetor[i] = vetor[j];
+                vetor[j] = aux;
+            }
+        }
+        aux = vetor[r];
+        vetor[r] = vetor[++i];
+        vetor[i] = aux;
+        return i;
+    }
+    public void quickSort(int p, int r){
+        if (p < r) {
+            int q = partition(p, r);
+            quickSort(p, q - 1);
+            quickSort(q + 1, r);
+        }
+    }
 }
 class VetorVazioException extends RuntimeException {
     public VetorVazioException(String msg) {
