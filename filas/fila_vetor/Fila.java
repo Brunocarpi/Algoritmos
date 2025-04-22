@@ -20,14 +20,14 @@ public class Fila {
         return (posicao + 1) % dados.length;
     }
     public void enfileira (int e) {
-      if (filaCheia()) throw new RuntimeException("fila cheia");
+      if (filaCheia()) throw new RuntimeException("Falha na insercao");
       dados[ultimo++] = e;
       ultimo = proximaPosicao(ultimo);
       ocupacao++;
 
     }
     public int desenfileira () {
-        if (filaVazia()) throw new RuntimeException("fila vazia");
+        if (filaVazia()) throw new RuntimeException("Falha na remocao");
         int aux = dados[primeiro];
         primeiro = proximaPosicao(primeiro);
         ocupacao--;
@@ -35,12 +35,40 @@ public class Fila {
     }
     @Override
     public String toString() {
-        if (filaVazia()) return "fila vazia";
+        if (filaVazia()) return "Fila vazia";
         String s = "";
         for (int i=primeiro, cont=0; cont<ocupacao; i=proximaPosicao(i), cont++)
         {
             s = s + dados[i] + " ";
         }
-        return s + "\n";
+        return s;
     }
+    public String stringVetor () {
+        int i = 0;
+        String s = "";
+        if (filaVazia()) 
+            for (i = 0; i < dados.length; i++)
+                s = s + "_ ";
+        else if (filaCheia())
+            for (i = 0; i < dados.length; i++)
+                s = s + dados[i] + " ";
+        else if (primeiro < ultimo){
+            for (i=0; i < primeiro; i++)
+                s = s + "_ ";
+            for (i = primeiro; i < ultimo; i++)
+                s = s + dados[i] + " ";
+            for (i = ultimo; i < dados.length; i++)
+                s = s + "_ ";
+        }
+        else {
+            for (i=0; i < ultimo; i++)
+                s = s + dados[i] + " ";
+            for (i = ultimo; i < primeiro; i++)
+                s = s + "_ ";
+            for (i = primeiro; i < dados.length; i++)
+                s = s + dados[i] + " ";
+        }
+        return s;
+    }
+    
 }

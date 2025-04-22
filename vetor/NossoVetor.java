@@ -142,7 +142,7 @@ public class NossoVetor {
             vetor[i + 1] = x;
         }
     }
-
+    //QuickSort
     int partition (int p, int r) {
         int x = vetor[r]; //O pivô é o último elemento do vetor
         int i = p - 1;
@@ -160,8 +160,10 @@ public class NossoVetor {
         return i;
     }
     public void quickSort(int p, int r){
+        System.out.println("p = " + p + " , r = " + r);
         if (p < r) {
             int q = partition(p, r);
+            System.out.println("q = " + q);
             quickSort(p, q - 1);
             quickSort(q + 1, r);
         }
