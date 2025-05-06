@@ -11,6 +11,13 @@ public class ArvoreBinaria{
         else
             insereRec(novo, raiz);
     }
+    public void insereOcorrencias (int info) {
+        if (arvoreVazia()) 
+            raiz = new NoOcorrencias(info); 
+        else 
+            insereOcorrenciasRec(info, raiz);
+        
+    }
     public void insereRec(No novo, No atual){
         if (novo.getInfo() > atual.getInfo()){
             if (atual.getDireita() == null)
@@ -23,6 +30,17 @@ public class ArvoreBinaria{
                 atual.setEsquerda(novo);
             else
                 insereRec(novo, atual.getEsquerda());
+        }
+    }
+    void insereOcorrenciasRec (int info, No atual){
+        if (info == atual.getInfo()) {
+
+        }
+        else if (info > atual.getInfo()) {
+
+        }
+        else {
+            
         }
     }
     // usar o percurso em ordem simétrica para construir o toString
@@ -40,31 +58,5 @@ public class ArvoreBinaria{
             s = s + toStringRec(atual.getDireita());
         return s;
     }
-}
-class No{
-    private int info;
-    private No esquerda;
-    private No direita;
-    public No(int info){
-        this.info = info;
-    }
-    public No getEsquerda() {
-        return esquerda;
-    }
-    public void setEsquerda(No esquerda) {
-        this.esquerda = esquerda;
-    }
-    public No getDireita() {
-        return direita;
-    }
-    public void setDireita(No direita) {
-        this.direita = direita;
-    }
-    public int getInfo() {
-        return info;
-    }
-    @Override
-    public String toString (){
-        return info + "";
-    }
+
 }
