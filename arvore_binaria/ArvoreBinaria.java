@@ -44,6 +44,10 @@ public class ArvoreBinaria{
         }
     }
     // usar o percurso em ordem simétrica para construir o toString
+    // pré-ordem: raiz, esq, dir
+    // em-ordem (simétrica): esq, raiz dir
+    // pós-ordem: esq, dir, raiz
+
     @Override
     public String toString (){
         if (arvoreVazia()) return "arvore vazia";
@@ -57,6 +61,15 @@ public class ArvoreBinaria{
         if (atual.getDireita() != null)
             s = s + toStringRec(atual.getDireita());
         return s;
+    }
+    public int altura () {
+        if (arvoreVazia() || raiz.getDireita() == null && raiz.getEsquerda() == null)
+            return 0;
+        return alturaRec(raiz);
+    }
+    private int alturaRec (No atual) {
+        if (atual != null || atual.getDireita() == null && atual.getEsquerda() == null)
+            return 0;   
     }
 
 }
