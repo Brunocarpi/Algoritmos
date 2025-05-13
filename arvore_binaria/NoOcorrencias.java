@@ -4,13 +4,14 @@ public class NoOcorrencias extends No {
         super(info);
         this.ocorrencias = 1;
     }
-
     public int getOcorrencias() {
         return ocorrencias;
     }
-
-    public void setOcorrencias(int ocorrencias) {
-        this.ocorrencias = ocorrencias;
+    public void incrementaOcorrencias() {
+        ocorrencias++;
+    }
+    public void decrementaOcorrencias() {
+        ocorrencias--;
     }
     @Override
     public String toString () {
