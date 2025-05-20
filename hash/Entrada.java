@@ -1,9 +1,11 @@
-public class Entrada<K, V> {
-    K key;
-    V value;
+public class Entrada <K, V> {
+    K chave;
+    V valor;
     Entrada<K, V> proximo;
-    public Entrada(K key, V value){
-    this.key
-    this.valuethis.
+
+    public Entrada (K chave, V valor) {
+        this.chave = chave;
+        this.valor = valor;
+        this.proximo = null;
     }
 }
