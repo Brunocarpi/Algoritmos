@@ -1,3 +1,6 @@
+    import java.util.List;
+    import java.util.ArrayList;
+    
     public class NossoHash <K, V>{
         private Entrada <K, V> [] tabela;
         private int capacidade = 10;
@@ -84,5 +87,16 @@
                     return false;
             }
             return true;
+        }
+        public List<V> getListaValores (K chave) {
+            List<V> lista = new ArrayList<>();
+            int indice = hash(chave);
+            Entrada<K, V> atual = tabela[indice];
+            while (atual != null) {
+                if (chave.equals(atual.chave));
+                    lista.add(atual.valor);
+                atual = atual.proximo;
+            }
+            return lista;
         }
     }
